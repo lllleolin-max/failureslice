@@ -54,13 +54,17 @@ class _WindowsJob:
 
 class CommandRunner:
     def __init__(self, command, cwd, env, environment_identity, code_inputs=(), timeout_ms=5000, max_output=65536):
-        if type(command) not in (list, tuple) or not command or any(type(x) is not str or "\x00" in x for x in command):
+        if type(command) not in (list, tuple) or not 1 <= len(command) <= 256 or any(type(x) is not str or "\x00" in x or len(x.encode("utf-8")) > 8192 for x in command):
             raise ValueError("command must be a nonempty argv array")
         if command.count("{candidate}") != 1 or any("{candidate}" in x and x != "{candidate}" for x in command):
             raise ValueError("exactly one whole argv element must be {candidate}")
         executable = Path(command[0])
         if not executable.is_absolute() or not executable.is_file():
             raise ValueError("executable must be an existing absolute file")
+        if not isinstance(cwd, (str, Path)):
+            raise ValueError("cwd must be a path")
+        if type(code_inputs) not in (tuple, list) or len(code_inputs) > 128 or any(not isinstance(p, (str, Path)) for p in code_inputs):
+            raise ValueError("code_inputs must be a list/tuple of at most 128 file paths")
         self.command = tuple(command)
         self.cwd = Path(cwd).resolve(strict=True)
         if not self.cwd.is_dir():

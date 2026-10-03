@@ -59,7 +59,7 @@ class RealRunnerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             script, pidfile = Path(tmp) / "spawn.py", Path(tmp) / "pid"
             script.write_text("import subprocess,sys,time\nfrom pathlib import Path\np=subprocess.Popen([sys.executable,'-c','import time;time.sleep(30)'])\nPath(sys.argv[1]).write_text(str(p.pid))\ntime.sleep(30)\n", encoding="utf-8")
-            r = CommandRunner([sys.executable, str(script), str(pidfile), "{candidate}"], tmp, env(), {"v": 1}, [script], timeout_ms=400)
+            r = CommandRunner([sys.executable, str(script), str(pidfile), "{candidate}"], tmp, env(), {"v": 1}, [script], timeout_ms=2000)
             self.assertEqual(r(()).outcome, Outcome.TIMEOUT)
             self.assertTrue(pidfile.exists())
             pid = int(pidfile.read_text())

@@ -23,6 +23,18 @@ class Observation:
     signature: dict | None = None
     detail: str = ""
 
+    def __post_init__(self):
+        if type(self.outcome) is not Outcome:
+            raise ValueError("observation outcome must be Outcome")
+        if type(self.detail) is not str or len(self.detail.encode("utf-8")) > 4096:
+            raise ValueError("detail must be a string of at most 4096 UTF-8 bytes")
+        if self.outcome in (Outcome.TARGET, Outcome.OTHER):
+            if type(self.signature) is not dict or not self.signature:
+                raise ValueError("failure observation needs a nonempty signature object")
+        elif self.signature is not None:
+            raise ValueError("non-failure observation must not carry a signature")
+        canonical(self.to_dict())
+
     def to_dict(self):
         return {"outcome": self.outcome.value, "signature": self.signature, "detail": self.detail}
 

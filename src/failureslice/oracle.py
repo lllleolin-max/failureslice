@@ -2,6 +2,7 @@
 from dataclasses import dataclass
 from enum import Enum
 import hashlib
+import json
 from .jsonio import canonical, integer
 
 
@@ -46,14 +47,24 @@ class EvidenceOracle:
         self.max_calls = integer(max_calls, "max_calls", 1, 1_000_000)
         canonical(identity() if callable(identity) else identity)
         self.calls = 0
-        self.history = {}
+        self._history = {}
+
+    @staticmethod
+    def _decode(raw):
+        value = json.loads(raw)
+        return Observation(Outcome(value["outcome"]), value["signature"], value["detail"])
+
+    @property
+    def history(self):
+        """Detached audit snapshots; mutating a returned signature cannot rewrite evidence."""
+        return {key: tuple(self._decode(raw) for raw in rows) for key, rows in self._history.items()}
 
     def evaluate(self, ids, refresh=False):
         steps = self.manifest.select(ids)
         identity = self.identity() if callable(self.identity) else self.identity
         key = hashlib.sha256(canonical({"candidate": [s.to_dict() for s in steps], "oracle": identity,
                                         "target": self.manifest.target, "repetitions": self.repetitions})).hexdigest()
-        history = self.history.setdefault(key, [])
+        history = self._history.setdefault(key, [])
         start = self.calls
         needed = self.repetitions if refresh else max(0, self.repetitions - len(history))
         for _ in range(needed):
@@ -70,16 +81,18 @@ class EvidenceOracle:
                         raise ValueError("failure needs a structured signature")
                     category = Outcome.TARGET if canonical(observation.signature) == canonical(self.manifest.target) else Outcome.OTHER
                     observation = Observation(category, observation.signature, observation.detail)
-                history.append(observation)
+                # Store immutable canonical bytes, detached from caller-owned dictionaries.
+                history.append(canonical(observation.to_dict()))
             except Exception:
-                history.append(Observation(Outcome.ERROR, detail="oracle callback rejected or raised"))
+                history.append(canonical(Observation(Outcome.ERROR, detail="oracle callback rejected or raised").to_dict()))
+        observations = tuple(self._decode(raw) for raw in history)
         # Diagnostic metadata (e.g. a measured duration) is not failure identity.
         # Keep it in the transcript, but compare only the actual classified result.
-        distinct = {canonical({"outcome": o.outcome.value, "signature": o.signature}) for o in history}
+        distinct = {canonical({"outcome": o.outcome.value, "signature": o.signature}) for o in observations}
         if len(distinct) > 1:
             outcome = Outcome.INCONSISTENT
         elif len(history) < self.repetitions or self.calls - start < needed:
             outcome = Outcome.UNKNOWN
         else:
-            outcome = history[0].outcome
-        return Evaluation(tuple(ids), key, outcome, tuple(history), self.calls - start)
+            outcome = observations[0].outcome
+        return Evaluation(tuple(ids), key, outcome, observations, self.calls - start)

@@ -18,6 +18,12 @@ def run(argv, cwd=None):
     return result.stdout.decode(errors="replace")
 
 
+def archive_canonical(repo, sha, destination):
+    """Export with command-local settings; keep the raw blob equality checks."""
+    return run(["git", "-c", "core.autocrlf=false", "-c", "core.eol=lf", "archive",
+                "--format=zip", f"--output={destination}", sha], repo)
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("sha")
@@ -33,7 +39,7 @@ def main():
     base = root / ".local" / f"archive-{sha[:12]}-{args.label}"
     base.mkdir(parents=True, exist_ok=False)
     archive = base / "source.zip"
-    run(["git", "archive", "--format=zip", f"--output={archive}", sha], root)
+    archive_canonical(root, sha, archive)
     source = base / "source"
     with zipfile.ZipFile(archive) as z:
         z.extractall(source)

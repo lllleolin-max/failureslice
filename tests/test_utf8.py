@@ -37,6 +37,13 @@ class SharedUTF8ReaderTests(unittest.TestCase):
             for raw in (text.encode(encoding), bytearray(text.encode(encoding))):
                 with self.subTest(encoding=encoding, kind=type(raw).__name__), self.assertRaises(ValueError):
                     loads(raw)
+        # These ASCII-only encodings are valid UTF-8 byte sequences containing
+        # NULs. Decoding alone is insufficient; text JSON parsing must reject them.
+        for encoding in ("utf-16-le", "utf-32-be"):
+            raw = '{"status":"FAIL","signature":{"kind":"ascii"}}'.encode(encoding)
+            self.assertIn("\x00", raw.decode("utf-8", errors="strict"))
+            with self.assertRaises(ValueError):
+                loads(raw)
 
     def test_legal_utf8_unicode_bytes_bytearrays_and_text(self):
         value = {"message": TARGET["message"], "values": [None, True, 1, 1.5]}

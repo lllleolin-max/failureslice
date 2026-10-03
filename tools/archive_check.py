@@ -40,10 +40,10 @@ def main():
     run([sys.executable, "-m", "venv", str(base / "venv")])
     python = base / "venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
     wheel_dir = base / "wheels"
-    run([str(python), "-I", "-m", "pip", "wheel", str(source), "--no-deps", "--wheel-dir", str(wheel_dir)])
+    run([str(python), "-I", "-X", "utf8", "-m", "pip", "wheel", str(source), "--no-deps", "--wheel-dir", str(wheel_dir)])
     wheel = next(wheel_dir.glob("*.whl"))
-    run([str(python), "-I", "-m", "pip", "install", "--no-deps", str(wheel)])
-    site = Path(run([str(python), "-I", "-c", "import sysconfig,failureslice;from pathlib import Path;site=Path(sysconfig.get_path('purelib'));assert Path(failureslice.__file__).resolve().parent == (site/'failureslice').resolve();print(site)"]).strip())
+    run([str(python), "-I", "-X", "utf8", "-m", "pip", "install", "--no-deps", str(wheel)])
+    site = Path(run([str(python), "-I", "-X", "utf8", "-c", "import sysconfig,failureslice;from pathlib import Path;site=Path(sysconfig.get_path('purelib'));assert Path(failureslice.__file__).resolve().parent == (site/'failureslice').resolve();print(site)"]).strip())
     tracked = run(["git", "ls-tree", "-r", "--name-only", sha], root).splitlines()
     modules = [f for f in tracked if f.startswith("src/") and f.endswith(".py")]
     digests = {}
@@ -57,11 +57,11 @@ def main():
             digests[member] = hashlib.sha256(blob).hexdigest()
     receipt = {"sha": sha, "version": wheel.name, "module_bytes_equal": digests, "import_location_verified": True, "python": sys.version.split()[0], "checks": {}}
     if args.suite:
-        receipt["checks"]["suite"] = run([str(python), "-I", "-m", "unittest", "discover", "-s", str(source / "tests"), "-v"], source)
+        receipt["checks"]["suite"] = run([str(python), "-I", "-X", "utf8", "-m", "unittest", "discover", "-s", str(source / "tests"), "-v"], source)
     if args.demo:
-        receipt["checks"]["registered_console_demo"] = run([str(python), "-I", str(source / "tools" / "demo.py"), str(base / "demo")], source)
+        receipt["checks"]["registered_console_demo"] = run([str(python), "-I", "-X", "utf8", str(source / "tools" / "demo.py"), str(base / "demo")], source)
     if args.contrast:
-        receipt["checks"]["contrast"] = run([str(python), "-I", str(source / "tools" / "contrast.py"), "--out", str(base / "contrast.json")], source)
+        receipt["checks"]["contrast"] = run([str(python), "-I", "-X", "utf8", str(source / "tools" / "contrast.py"), "--out", str(base / "contrast.json")], source)
     (base / "receipt.json").write_text(json.dumps(receipt, indent=2), encoding="utf-8")
     print(json.dumps({"sha": sha, "version": wheel.name, "modules_equal": len(digests), "checks": list(receipt["checks"])}))
 

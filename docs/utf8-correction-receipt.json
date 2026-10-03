@@ -1,0 +1,186 @@
+{
+  "before_artifact": "05451e86e91aacce04c6ecd7712be9b5fa1ee9b8",
+  "after_direct_child": "cd880be2b4b9b6b4f8c53170f6826c0a615e069a",
+  "direct_parent_verified": true,
+  "version": "0.1.0",
+  "probe_sha256": "b68ddb617fc7b738b27ef0e19bfdcbd0dcf384f2b47631948511225adb16d1af",
+  "before_exit": 1,
+  "after_exit": 0,
+  "before": {
+    "passed": false,
+    "expected_contract": "UTF-8 control accepted; UTF-16/32 runner output must be ERROR and prevent a certificate",
+    "records": [
+      {
+        "encoding": "utf-8",
+        "sdk_runner_outcome": "OTHER",
+        "sdk_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "sdk_complete": true,
+        "console_exit": 0,
+        "console_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "console_complete": true,
+        "console_candidate": [],
+        "source_preserved": true,
+        "passed": true
+      },
+      {
+        "encoding": "utf-16",
+        "sdk_runner_outcome": "OTHER",
+        "sdk_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "sdk_complete": true,
+        "console_exit": 0,
+        "console_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "console_complete": true,
+        "console_candidate": [],
+        "source_preserved": true,
+        "passed": false
+      },
+      {
+        "encoding": "utf-32",
+        "sdk_runner_outcome": "OTHER",
+        "sdk_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "sdk_complete": true,
+        "console_exit": 0,
+        "console_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "console_complete": true,
+        "console_candidate": [],
+        "source_preserved": true,
+        "passed": false
+      },
+      {
+        "encoding": "utf-16-le",
+        "sdk_runner_outcome": "OTHER",
+        "sdk_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "sdk_complete": true,
+        "console_exit": 0,
+        "console_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "console_complete": true,
+        "console_candidate": [],
+        "source_preserved": true,
+        "passed": false
+      },
+      {
+        "encoding": "utf-32-be",
+        "sdk_runner_outcome": "OTHER",
+        "sdk_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "sdk_complete": true,
+        "console_exit": 0,
+        "console_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "console_complete": true,
+        "console_candidate": [],
+        "source_preserved": true,
+        "passed": false
+      }
+    ]
+  },
+  "after": {
+    "passed": true,
+    "expected_contract": "UTF-8 control accepted; UTF-16/32 runner output must be ERROR and prevent a certificate",
+    "records": [
+      {
+        "encoding": "utf-8",
+        "sdk_runner_outcome": "OTHER",
+        "sdk_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "sdk_complete": true,
+        "console_exit": 0,
+        "console_certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+        "console_complete": true,
+        "console_candidate": [],
+        "source_preserved": true,
+        "passed": true
+      },
+      {
+        "encoding": "utf-16",
+        "sdk_runner_outcome": "ERROR",
+        "sdk_certificate": "UNKNOWN",
+        "sdk_complete": false,
+        "console_exit": 3,
+        "console_certificate": "UNKNOWN",
+        "console_complete": false,
+        "console_candidate": [
+          "setup"
+        ],
+        "source_preserved": true,
+        "passed": true
+      },
+      {
+        "encoding": "utf-32",
+        "sdk_runner_outcome": "ERROR",
+        "sdk_certificate": "UNKNOWN",
+        "sdk_complete": false,
+        "console_exit": 3,
+        "console_certificate": "UNKNOWN",
+        "console_complete": false,
+        "console_candidate": [
+          "setup"
+        ],
+        "source_preserved": true,
+        "passed": true
+      },
+      {
+        "encoding": "utf-16-le",
+        "sdk_runner_outcome": "ERROR",
+        "sdk_certificate": "UNKNOWN",
+        "sdk_complete": false,
+        "console_exit": 3,
+        "console_certificate": "UNKNOWN",
+        "console_complete": false,
+        "console_candidate": [
+          "setup"
+        ],
+        "source_preserved": true,
+        "passed": true
+      },
+      {
+        "encoding": "utf-32-be",
+        "sdk_runner_outcome": "ERROR",
+        "sdk_certificate": "UNKNOWN",
+        "sdk_complete": false,
+        "console_exit": 3,
+        "console_certificate": "UNKNOWN",
+        "console_complete": false,
+        "console_candidate": [
+          "setup"
+        ],
+        "source_preserved": true,
+        "passed": true
+      }
+    ]
+  },
+  "canonical_module_bytes_equal": {
+    "failureslice/__init__.py": "5f3c9a8c48ea968fe2d6a7127c18794b48a71946ad1e0a325e982188101e1958",
+    "failureslice/cli.py": "2c6176a6a5abd7cfd1e1dcdf68d48d8cacabe1d1300fb0b061cf17630feb356a",
+    "failureslice/jsonio.py": "3705161bf51a90e786d9d40602dd545912538aec641ce068822738ea096e1e49",
+    "failureslice/model.py": "a8b34a9e812681640b0a692dc4dd5f715443217e4a301ee6fc6d49ff9e446e0b",
+    "failureslice/oracle.py": "9d491ede3fb6779bc997d4aa70cbb435b8dc87ddcd3d85b9c8bcf2465941ff18",
+    "failureslice/reducer.py": "45660181c7cd579d9399e63ed3135aaa73781a04f9434c635e8581acf9e63962",
+    "failureslice/runner.py": "cdfaeb3bb590fccd2fd2eee581c5bb12afd06619cc120e477e47ca1bee4dfb10"
+  },
+  "installed_import_location_verified": true,
+  "suite_tests": 35,
+  "suite_passed": true,
+  "registered_console": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL: size=3 calls=56 states=64",
+  "independent_certificates": {
+    "passed": true,
+    "models": 99,
+    "closed_subsets": 1199,
+    "exact_calls": 2398,
+    "local_not_inclusion_minimal_models": 26,
+    "indeterminate_categories_refuse_certificate": [
+      "INVALID",
+      "TIMEOUT",
+      "ERROR",
+      "UNKNOWN",
+      "INCONSISTENT"
+    ],
+    "initial_not_target": [
+      "PASS",
+      "OTHER"
+    ],
+    "equal_required_budget_certifies_one_less_does_not": true,
+    "cache_context_and_detached_history_checks": true
+  },
+  "original_three_probes_passed": true,
+  "verification_harness_failure": "initial isolated interpreter emitted locale-encoded site path; fixed by explicit -X utf8 and fresh successful verification",
+  "remote_ci": "not run; existing current-HEAD archive matrix inspected",
+  "independent_rereview": "pending"
+}

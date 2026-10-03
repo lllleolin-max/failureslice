@@ -34,10 +34,13 @@ class Evaluation:
     outcome: Outcome
     observations: tuple[Observation, ...]
     fresh_calls: int
+    context: str = ""
+    context_stable: bool = True
 
     def to_dict(self):
         return {"candidate": list(self.candidate), "key": self.key, "outcome": self.outcome.value,
-                "observations": [o.to_dict() for o in self.observations], "fresh_calls": self.fresh_calls}
+                "observations": [o.to_dict() for o in self.observations], "fresh_calls": self.fresh_calls,
+                "context": self.context, "context_stable": self.context_stable}
 
 
 class EvidenceOracle:
@@ -48,6 +51,12 @@ class EvidenceOracle:
         canonical(identity() if callable(identity) else identity)
         self.calls = 0
         self._history = {}
+        self._unstable_keys = set()
+
+    def context_id(self):
+        identity = self.identity() if callable(self.identity) else self.identity
+        return hashlib.sha256(canonical({"manifest": self.manifest.to_dict(), "oracle": identity,
+                                        "repetitions": self.repetitions})).hexdigest()
 
     @staticmethod
     def _decode(raw):
@@ -61,9 +70,12 @@ class EvidenceOracle:
 
     def evaluate(self, ids, refresh=False):
         steps = self.manifest.select(ids)
+        context = self.context_id()
+        target_signature = canonical(self.manifest.target)
         identity = self.identity() if callable(self.identity) else self.identity
         key = hashlib.sha256(canonical({"candidate": [s.to_dict() for s in steps], "oracle": identity,
-                                        "target": self.manifest.target, "repetitions": self.repetitions})).hexdigest()
+                                        "target": self.manifest.target, "repetitions": self.repetitions,
+                                        "context": context})).hexdigest()
         history = self._history.setdefault(key, [])
         start = self.calls
         needed = self.repetitions if refresh else max(0, self.repetitions - len(history))
@@ -79,20 +91,29 @@ class EvidenceOracle:
                 if observation.outcome in (Outcome.TARGET, Outcome.OTHER):
                     if type(observation.signature) is not dict or not observation.signature:
                         raise ValueError("failure needs a structured signature")
-                    category = Outcome.TARGET if canonical(observation.signature) == canonical(self.manifest.target) else Outcome.OTHER
+                    category = Outcome.TARGET if canonical(observation.signature) == target_signature else Outcome.OTHER
                     observation = Observation(category, observation.signature, observation.detail)
                 # Store immutable canonical bytes, detached from caller-owned dictionaries.
                 history.append(canonical(observation.to_dict()))
             except Exception:
                 history.append(canonical(Observation(Outcome.ERROR, detail="oracle callback rejected or raised").to_dict()))
+            try:
+                stable = self.context_id() == context
+            except Exception:
+                stable = False
+            if not stable:
+                self._unstable_keys.add(key)
+                break
         observations = tuple(self._decode(raw) for raw in history)
         # Diagnostic metadata (e.g. a measured duration) is not failure identity.
         # Keep it in the transcript, but compare only the actual classified result.
         distinct = {canonical({"outcome": o.outcome.value, "signature": o.signature}) for o in observations}
-        if len(distinct) > 1:
+        if key in self._unstable_keys:
+            outcome = Outcome.ERROR
+        elif len(distinct) > 1:
             outcome = Outcome.INCONSISTENT
         elif len(history) < self.repetitions or self.calls - start < needed:
             outcome = Outcome.UNKNOWN
         else:
             outcome = observations[0].outcome
-        return Evaluation(tuple(ids), key, outcome, observations, self.calls - start)
+        return Evaluation(tuple(ids), key, outcome, observations, self.calls - start, context, key not in self._unstable_keys)

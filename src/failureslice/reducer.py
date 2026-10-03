@@ -26,12 +26,18 @@ def reduce(manifest, oracle, mode="exact", max_states=100_000):
     integer(max_states, "max_states", 1, 1_000_000)
     if mode not in ("exact", "local"):
         raise ValueError("mode must be exact or local")
+    if oracle.manifest is not manifest:
+        raise ValueError("reducer and oracle must share the same manifest")
+    context = oracle.context_id()
     initial = tuple(s.id for s in manifest.steps)
     evaluations = [oracle.evaluate(initial)]
     states = 1
     incumbent = initial
+    if evaluations[0].context != context or not evaluations[0].context_stable:
+        return Result(initial, "UNKNOWN", False, tuple(evaluations), oracle.calls, states)
     if evaluations[0].outcome != Outcome.TARGET:
-        return Result(initial, "INITIAL_NOT_TARGET", False, tuple(evaluations), oracle.calls, states)
+        certificate = "INITIAL_NOT_TARGET" if evaluations[0].outcome in (Outcome.PASS, Outcome.OTHER) else "UNKNOWN"
+        return Result(initial, certificate, False, tuple(evaluations), oracle.calls, states)
     if mode == "exact":
         minima = [initial]
         complete = True
@@ -48,6 +54,9 @@ def reduce(manifest, oracle, mode="exact", max_states=100_000):
                     continue
                 evaluation = oracle.evaluate(ids)
                 evaluations.append(evaluation)
+                if evaluation.context != context or not evaluation.context_stable:
+                    complete, stop = False, True
+                    break
                 if evaluation.outcome == Outcome.TARGET:
                     if len(ids) < len(incumbent):
                         incumbent, minima = ids, [ids]
@@ -73,6 +82,8 @@ def reduce(manifest, oracle, mode="exact", max_states=100_000):
             states += 1
             evaluation = oracle.evaluate(ids)
             evaluations.append(evaluation)
+            if evaluation.context != context or not evaluation.context_stable:
+                return Result(incumbent, "UNKNOWN", False, tuple(evaluations), oracle.calls, states)
             if evaluation.outcome == Outcome.TARGET:
                 incumbent, changed = ids, True
                 break

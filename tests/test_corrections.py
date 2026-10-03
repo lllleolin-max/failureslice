@@ -1,5 +1,5 @@
 import unittest
-from failureslice import EvidenceOracle, Manifest, Observation, Outcome, Step
+from failureslice import EvidenceOracle, Manifest, Observation, Outcome, Step, reduce
 
 
 class CorrectionTests(unittest.TestCase):
@@ -24,3 +24,29 @@ class CorrectionTests(unittest.TestCase):
         reused = o.evaluate(("a",))
         self.assertEqual(reused.fresh_calls, 0)
         self.assertTrue(all(x.signature == target for x in reused.observations))
+
+    def test_declared_context_cannot_change_during_certificate(self):
+        target = {"kind": "original"}
+        for mode in ("exact", "local"):
+            m = Manifest((Step("a"), Step("b")), target)
+            identity = {"version": 1}
+            def callback(steps):
+                if len(steps) < 2:
+                    identity["version"] = 2
+                    return Observation(Outcome.PASS)
+                return Observation(Outcome.TARGET, target)
+            r = reduce(m, EvidenceOracle(m, callback, identity), mode=mode)
+            self.assertFalse(r.complete)
+            self.assertEqual(r.certificate, "UNKNOWN")
+            self.assertFalse(r.evaluations[-1].context_stable)
+            self.assertEqual(r.evaluations[-1].observations[0].outcome, Outcome.PASS)
+
+    def test_manifest_mutation_during_callback_is_not_evidence(self):
+        target = {"kind": "original"}
+        m = Manifest((Step("a", payload={"version": 1}),), target)
+        def callback(steps):
+            steps[0].payload["version"] = 2
+            return Observation(Outcome.TARGET, target)
+        e = EvidenceOracle(m, callback, {}).evaluate(("a",))
+        self.assertEqual(e.outcome, Outcome.ERROR)
+        self.assertFalse(e.context_stable)

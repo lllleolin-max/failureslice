@@ -73,7 +73,9 @@ class EvidenceOracle:
                 history.append(observation)
             except Exception:
                 history.append(Observation(Outcome.ERROR, detail="oracle callback rejected or raised"))
-        distinct = {canonical(o.to_dict()) for o in history}
+        # Diagnostic metadata (e.g. a measured duration) is not failure identity.
+        # Keep it in the transcript, but compare only the actual classified result.
+        distinct = {canonical({"outcome": o.outcome.value, "signature": o.signature}) for o in history}
         if len(distinct) > 1:
             outcome = Outcome.INCONSISTENT
         elif len(history) < self.repetitions or self.calls - start < needed:

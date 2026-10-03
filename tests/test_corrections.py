@@ -1,0 +1,13 @@
+import unittest
+from failureslice import EvidenceOracle, Manifest, Observation, Outcome, Step
+
+
+class CorrectionTests(unittest.TestCase):
+    def test_diagnostic_variation_is_not_failure_variation(self):
+        target = {"kind": "import-original"}
+        m = Manifest((Step("a"),), target)
+        details = iter(["duration=1", "duration=2"])
+        o = EvidenceOracle(m, lambda _: Observation(Outcome.TARGET, target, next(details)), {"v": 1})
+        e = o.evaluate(("a",))
+        self.assertEqual(e.outcome, Outcome.TARGET)
+        self.assertEqual([x.detail for x in e.observations], ["duration=1", "duration=2"])

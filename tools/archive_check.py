@@ -10,7 +10,8 @@ import zipfile
 
 
 def run(argv, cwd=None):
-    result = subprocess.run(argv, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    result = subprocess.run(argv, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                            env={**os.environ, "PYTHONIOENCODING": "utf-8"})
     if result.returncode:
         # Preserve raw diagnostics only in ignored private destination, not safe receipts.
         raise RuntimeError(f"command failed with exit {result.returncode}: {result.stdout[-1000:].decode(errors='replace')}")
@@ -23,10 +24,13 @@ def main():
     p.add_argument("--suite", action="store_true")
     p.add_argument("--demo", action="store_true")
     p.add_argument("--contrast", action="store_true")
+    p.add_argument("--label", default="run")
     args = p.parse_args()
     root = Path(__file__).resolve().parents[1]
     sha = run(["git", "rev-parse", args.sha], root).strip()
-    base = root / ".local" / f"archive-{sha[:12]}"
+    if not args.label.replace("-", "").isalnum():
+        p.error("label must contain letters, digits or hyphens")
+    base = root / ".local" / f"archive-{sha[:12]}-{args.label}"
     base.mkdir(parents=True, exist_ok=False)
     archive = base / "source.zip"
     run(["git", "archive", "--format=zip", f"--output={archive}", sha], root)

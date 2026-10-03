@@ -1,0 +1,70 @@
+{
+  "before_artifact": "f4188c645b0b7c72054367fce6810e77e452551c",
+  "direct_tool_correction": "d8dc62ecbd74ea456bee52e0f37cb008359176d2",
+  "direct_parent_verified": true,
+  "version": "0.1.0",
+  "unchanged_original_probe_sha256": "8717b97b68554df8448402f6ba1e9294bc5de776632834b5e21434008f8b0e39",
+  "before": {
+    "commit": "f4188c645b0b7c72054367fce6810e77e452551c",
+    "passed": false,
+    "verifier_exit": 1,
+    "category": "CANONICAL_ARCHIVE_ASSOCIATION",
+    "controlled_policy": "process-scoped core.autocrlf=true; no persistent settings changed",
+    "command": "python -X utf8 tools/archive_check.py HEAD --suite --demo --contrast --label independent-policy",
+    "canonical_blob_bytes": 300,
+    "archived_bytes": 306,
+    "canonical_blob_CRLF": 0,
+    "archived_CRLF": 6,
+    "canonical_bytes_equal": false,
+    "equal_only_after_CRLF_normalization": true,
+    "canonical_sha256": "5f3c9a8c48ea968fe2d6a7127c18794b48a71946ad1e0a325e982188101e1958",
+    "archived_sha256": "4bea83590cf0561ac9706865fd8d46ff0a4bccfe7f79f9d60cd12164f3e54fa6"
+  },
+  "after": {
+    "commit": "d8dc62ecbd74ea456bee52e0f37cb008359176d2",
+    "passed": true,
+    "verifier_exit": 0,
+    "category": "PASS",
+    "controlled_policy": "process-scoped core.autocrlf=true; no persistent settings changed",
+    "command": "python -X utf8 tools/archive_check.py HEAD --suite --demo --contrast --label independent-policy",
+    "canonical_blob_bytes": 300,
+    "archived_bytes": 300,
+    "canonical_blob_CRLF": 0,
+    "archived_CRLF": 0,
+    "canonical_bytes_equal": true,
+    "equal_only_after_CRLF_normalization": true,
+    "canonical_sha256": "5f3c9a8c48ea968fe2d6a7127c18794b48a71946ad1e0a325e982188101e1958",
+    "archived_sha256": "5f3c9a8c48ea968fe2d6a7127c18794b48a71946ad1e0a325e982188101e1958",
+    "observed_verifier_summary": {
+      "sha": "d8dc62ecbd74ea456bee52e0f37cb008359176d2",
+      "version": "failureslice-0.1.0-py3-none-any.whl",
+      "modules_equal": 7,
+      "checks": [
+        "suite",
+        "registered_console_demo",
+        "contrast"
+      ]
+    }
+  },
+  "library_src_tree_unchanged": "4ea83d9e02b2711e8fd6cfc2e8a3dab6f2cad057",
+  "core_application_cycle": false,
+  "original_application_tests": 35,
+  "tool_regression_tests": 1,
+  "actual_suite_total": 36,
+  "actual_suite_passed": true,
+  "canonical_module_bytes_equal": {
+    "failureslice/__init__.py": "5f3c9a8c48ea968fe2d6a7127c18794b48a71946ad1e0a325e982188101e1958",
+    "failureslice/cli.py": "2c6176a6a5abd7cfd1e1dcdf68d48d8cacabe1d1300fb0b061cf17630feb356a",
+    "failureslice/jsonio.py": "3705161bf51a90e786d9d40602dd545912538aec641ce068822738ea096e1e49",
+    "failureslice/model.py": "a8b34a9e812681640b0a692dc4dd5f715443217e4a301ee6fc6d49ff9e446e0b",
+    "failureslice/oracle.py": "9d491ede3fb6779bc997d4aa70cbb435b8dc87ddcd3d85b9c8bcf2465941ff18",
+    "failureslice/reducer.py": "45660181c7cd579d9399e63ed3135aaa73781a04f9434c635e8581acf9e63962",
+    "failureslice/runner.py": "cdfaeb3bb590fccd2fd2eee581c5bb12afd06619cc120e477e47ca1bee4dfb10"
+  },
+  "installed_import_location_verified": true,
+  "registered_console": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL: size=3 calls=56 states=64",
+  "four_case_contrast_executed": true,
+  "configuration_changes": "archive command-local only; no global/source/clone persistent config changed",
+  "remote_ci": "not run",
+  "new_independent_acceptance": "pending"
+}

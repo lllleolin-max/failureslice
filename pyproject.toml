@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "failureslice"
+version = "0.1.0"
+description = "Evidence-aware reduction of finite prerequisite manifests preserving a structured failure"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+readme = "README.md"
+authors = [{name = "lllleolin-max"}]
+
+[project.scripts]
+failureslice = "failureslice.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,11 @@
+{
+  "target": {"type": "sqlite3.IntegrityError", "message": "UNIQUE constraint failed: users.email", "operation": "duplicate-import"},
+  "steps": [
+    {"id": "schema", "payload": {"operation": "schema"}},
+    {"id": "legacy-import", "requires": ["schema"], "payload": {"operation": "legacy-import"}},
+    {"id": "seed", "requires": ["schema"], "payload": {"operation": "seed"}},
+    {"id": "audit-log", "payload": {"operation": "no-op"}},
+    {"id": "duplicate-import", "requires": ["schema", "seed"], "payload": {"operation": "duplicate-import"}},
+    {"id": "metrics", "payload": {"operation": "no-op"}}
+  ]
+}

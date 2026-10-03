@@ -54,10 +54,20 @@ def _pairs(pairs):
 
 
 def loads(raw):
-    if len(raw) > MAX_BYTES:
-        raise ValueError("JSON byte budget exceeded")
     try:
-        value = json.loads(raw, object_pairs_hook=_pairs, parse_constant=lambda _: (_ for _ in ()).throw(ValueError("nonfinite JSON")))
+        if type(raw) in (bytes, bytearray):
+            if len(raw) > MAX_BYTES:
+                raise ValueError("JSON byte budget exceeded")
+            # json.loads(bytes) auto-detects UTF-16/32. External inputs and the
+            # oracle protocol require UTF-8, so parse only explicitly decoded text.
+            text = raw.decode("utf-8", errors="strict")
+        elif type(raw) is str:
+            if len(raw.encode("utf-8")) > MAX_BYTES:
+                raise ValueError("JSON byte budget exceeded")
+            text = raw
+        else:
+            raise ValueError("JSON input must be UTF-8 bytes or text")
+        value = json.loads(text, object_pairs_hook=_pairs, parse_constant=lambda _: (_ for _ in ()).throw(ValueError("nonfinite JSON")))
         canonical(value)
         return value
     except (RecursionError, UnicodeError, json.JSONDecodeError) as exc:

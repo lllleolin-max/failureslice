@@ -1,0 +1,175 @@
+{
+  "probe_sha256": "2256b75e8184d3548a44f2cfcd75d810f7d2ce9ba964740dc48722c07da133b4",
+  "archives": [
+    {
+      "sha": "db8e99c53842e67b6d47bbb4660e474b2dfd8340",
+      "modules": {
+        "failureslice/__init__.py": "5f3c9a8c48ea968fe2d6a7127c18794b48a71946ad1e0a325e982188101e1958",
+        "failureslice/cli.py": "2c6176a6a5abd7cfd1e1dcdf68d48d8cacabe1d1300fb0b061cf17630feb356a",
+        "failureslice/jsonio.py": "da7e984c16115bfcd4c18e771869b503c942c6e5a78c18763fc9f0fff1c81549",
+        "failureslice/model.py": "a8b34a9e812681640b0a692dc4dd5f715443217e4a301ee6fc6d49ff9e446e0b",
+        "failureslice/oracle.py": "f4450d9b835368c8662f59e1f7ba740b81030c9f79d0295be4078fb3ac17cd51",
+        "failureslice/reducer.py": "c144dc4858cacc50cac6b9a38238ae76629464802cc0f389ec342eabc34c7bc0",
+        "failureslice/runner.py": "16901dbf18d358aab7f53021abbfaa503f12bcdcf19592e304c65a6fb2a2158b"
+      },
+      "tests": 19,
+      "python": "3.14.3",
+      "suite_pass": true
+    },
+    {
+      "sha": "5ac8cdb6c2bdbe0eeadbfe1312156e7d5cf5f2f9",
+      "modules": {
+        "failureslice/__init__.py": "5f3c9a8c48ea968fe2d6a7127c18794b48a71946ad1e0a325e982188101e1958",
+        "failureslice/cli.py": "2c6176a6a5abd7cfd1e1dcdf68d48d8cacabe1d1300fb0b061cf17630feb356a",
+        "failureslice/jsonio.py": "da7e984c16115bfcd4c18e771869b503c942c6e5a78c18763fc9f0fff1c81549",
+        "failureslice/model.py": "a8b34a9e812681640b0a692dc4dd5f715443217e4a301ee6fc6d49ff9e446e0b",
+        "failureslice/oracle.py": "bfe66ba38beffe7064c5498503069405a7687de0049e725dd3375ea43dbf0a07",
+        "failureslice/reducer.py": "c144dc4858cacc50cac6b9a38238ae76629464802cc0f389ec342eabc34c7bc0",
+        "failureslice/runner.py": "16901dbf18d358aab7f53021abbfaa503f12bcdcf19592e304c65a6fb2a2158b"
+      },
+      "tests": 20,
+      "python": "3.14.3",
+      "suite_pass": true
+    },
+    {
+      "sha": "c14e8bfaed60d5ee8c8108985786d51310dc366d",
+      "modules": {
+        "failureslice/__init__.py": "5f3c9a8c48ea968fe2d6a7127c18794b48a71946ad1e0a325e982188101e1958",
+        "failureslice/cli.py": "2c6176a6a5abd7cfd1e1dcdf68d48d8cacabe1d1300fb0b061cf17630feb356a",
+        "failureslice/jsonio.py": "da7e984c16115bfcd4c18e771869b503c942c6e5a78c18763fc9f0fff1c81549",
+        "failureslice/model.py": "a8b34a9e812681640b0a692dc4dd5f715443217e4a301ee6fc6d49ff9e446e0b",
+        "failureslice/oracle.py": "c25ce5afc0e6ea257eb7939a1da8985e0ffd2fde00ebce926f3bdef90b4682e4",
+        "failureslice/reducer.py": "c144dc4858cacc50cac6b9a38238ae76629464802cc0f389ec342eabc34c7bc0",
+        "failureslice/runner.py": "16901dbf18d358aab7f53021abbfaa503f12bcdcf19592e304c65a6fb2a2158b"
+      },
+      "tests": 21,
+      "python": "3.14.3",
+      "suite_pass": true
+    },
+    {
+      "sha": "3a9e2e15b3a997ce9e105ea69990e5d3cd4c40c9",
+      "modules": {
+        "failureslice/__init__.py": "5f3c9a8c48ea968fe2d6a7127c18794b48a71946ad1e0a325e982188101e1958",
+        "failureslice/cli.py": "2c6176a6a5abd7cfd1e1dcdf68d48d8cacabe1d1300fb0b061cf17630feb356a",
+        "failureslice/jsonio.py": "da7e984c16115bfcd4c18e771869b503c942c6e5a78c18763fc9f0fff1c81549",
+        "failureslice/model.py": "a8b34a9e812681640b0a692dc4dd5f715443217e4a301ee6fc6d49ff9e446e0b",
+        "failureslice/oracle.py": "49e0b92a7ff26daa0613fe8eb949c4fbdb238ed070c312854b5993fd330dc058",
+        "failureslice/reducer.py": "45660181c7cd579d9399e63ed3135aaa73781a04f9434c635e8581acf9e63962",
+        "failureslice/runner.py": "16901dbf18d358aab7f53021abbfaa503f12bcdcf19592e304c65a6fb2a2158b"
+      },
+      "tests": 23,
+      "python": "3.14.3",
+      "suite_pass": true
+    }
+  ],
+  "cycles": [
+    {
+      "case": "diagnostic_metadata",
+      "direct_parent_verified": true,
+      "runs": [
+        {
+          "sha": "db8e99c53842e67b6d47bbb4660e474b2dfd8340",
+          "exit": 1,
+          "probe": {
+            "case": "diagnostic_metadata",
+            "observed": {
+              "observations": 2,
+              "outcome": "INCONSISTENT"
+            },
+            "passed": false
+          }
+        },
+        {
+          "sha": "5ac8cdb6c2bdbe0eeadbfe1312156e7d5cf5f2f9",
+          "exit": 0,
+          "probe": {
+            "case": "diagnostic_metadata",
+            "observed": {
+              "observations": 2,
+              "outcome": "TARGET"
+            },
+            "passed": true
+          }
+        }
+      ]
+    },
+    {
+      "case": "mutable_observations",
+      "direct_parent_verified": true,
+      "runs": [
+        {
+          "sha": "5ac8cdb6c2bdbe0eeadbfe1312156e7d5cf5f2f9",
+          "exit": 1,
+          "probe": {
+            "case": "mutable_observations",
+            "observed": {
+              "fresh_calls": 0,
+              "outcome": "TARGET",
+              "signatures": [
+                {
+                  "kind": "report-mutation"
+                },
+                {
+                  "kind": "report-mutation"
+                }
+              ]
+            },
+            "passed": false
+          }
+        },
+        {
+          "sha": "c14e8bfaed60d5ee8c8108985786d51310dc366d",
+          "exit": 0,
+          "probe": {
+            "case": "mutable_observations",
+            "observed": {
+              "fresh_calls": 0,
+              "outcome": "TARGET",
+              "signatures": [
+                {
+                  "kind": "import-original"
+                },
+                {
+                  "kind": "import-original"
+                }
+              ]
+            },
+            "passed": true
+          }
+        }
+      ]
+    },
+    {
+      "case": "declared_identity_drift",
+      "direct_parent_verified": true,
+      "runs": [
+        {
+          "sha": "c14e8bfaed60d5ee8c8108985786d51310dc366d",
+          "exit": 1,
+          "probe": {
+            "case": "declared_identity_drift",
+            "observed": {
+              "calls": 8,
+              "certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+              "complete": true
+            },
+            "passed": false
+          }
+        },
+        {
+          "sha": "3a9e2e15b3a997ce9e105ea69990e5d3cd4c40c9",
+          "exit": 0,
+          "probe": {
+            "case": "declared_identity_drift",
+            "observed": {
+              "calls": 3,
+              "certificate": "UNKNOWN",
+              "complete": false
+            },
+            "passed": true
+          }
+        }
+      ]
+    }
+  ]
+}

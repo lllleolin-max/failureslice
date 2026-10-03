@@ -1,0 +1,3581 @@
+{
+  "synthetic": true,
+  "incumbent_executed": false,
+  "repetitions": 2,
+  "cases": [
+    {
+      "case": "alternate-signature",
+      "budget": 512,
+      "initial_size": 6,
+      "results": {
+        "unstructured-blind-ddmin": {
+          "candidate": [
+            "legacy-import"
+          ],
+          "size": 1,
+          "target_reproduced": false,
+          "outcome": "INVALID",
+          "calls": 12,
+          "invalid_calls": 4,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed"
+              ],
+              "outcome": "OTHER",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "legacy-import",
+                "seed"
+              ],
+              "outcome": "INVALID",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "legacy-import"
+              ],
+              "outcome": "INVALID",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "closed-blind-ddmin": {
+          "candidate": [
+            "schema",
+            "legacy-import"
+          ],
+          "size": 2,
+          "target_reproduced": false,
+          "outcome": "OTHER",
+          "calls": 10,
+          "invalid_calls": 0,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed"
+              ],
+              "outcome": "OTHER",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import"
+              ],
+              "outcome": "OTHER",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "closed-signed-ddmin": {
+          "candidate": [
+            "schema",
+            "seed",
+            "duplicate-import"
+          ],
+          "size": 3,
+          "target_reproduced": true,
+          "outcome": "TARGET",
+          "calls": 18,
+          "invalid_calls": 0,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed"
+              ],
+              "outcome": "OTHER",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "audit-log"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "failureslice-exact": {
+          "candidate": [
+            "schema",
+            "seed",
+            "duplicate-import"
+          ],
+          "size": 3,
+          "certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+          "complete": true,
+          "calls": 56,
+          "states": 64,
+          "alternatives": [
+            [
+              "schema",
+              "seed",
+              "duplicate-import"
+            ]
+          ],
+          "evaluations": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "key": "1663eac8e6b37cd894ccbd3771baf614c6efaf82722d71a65bfcf6150d5f7697",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [],
+              "key": "1abb353a17f49d99e25b65e174a231b689b0b34d92ecf8ad4b987219b27127b8",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "key": "afd6c2e2889a08ac9c622d44388fc2766fbe3e0e74e9e4a810f17d2d923bc495",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log"
+              ],
+              "key": "985990a9cd2293942070f7a77bd06fd9fdd36aabf632dbfa70d3c64747b28801",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "metrics"
+              ],
+              "key": "754c7fd859611e0677e5bf78f0767e73771712a1036d0992560d0661a671a437",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import"
+              ],
+              "key": "283e2f1e8aaa75374acacf4324579c9c12bf64de2f97c54cde24b5503b11c06a",
+              "outcome": "OTHER",
+              "observations": [
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "key": "571a6446ee0b9fd88d5f79180c03446b6942dee3f37e86bca86e65d1d4e95cd4",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "audit-log"
+              ],
+              "key": "d54080fc7b56a3789fbc1552685eacf06653afd74dab0d4bfe294d125ffa0a97",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "metrics"
+              ],
+              "key": "2c769e49ae1c49d1912b1fa006f1902edbf5e82b59f69eb94b31ce15c28b19a0",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log",
+                "metrics"
+              ],
+              "key": "7c82f3b9564503f639d8bbe1bbf9f281a4293d3258cde770d3a246abf9a76785",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed"
+              ],
+              "key": "a3c6527d69db7dfb27f6ba3caf60459c4e60dc0ca36a08605d13f18026033299",
+              "outcome": "OTHER",
+              "observations": [
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "audit-log"
+              ],
+              "key": "0053a5ff6413e8e59d4708bcf3ef2701764f9841afa7104d95695be96c174532",
+              "outcome": "OTHER",
+              "observations": [
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "metrics"
+              ],
+              "key": "1792e2e24c482326c8a12afccee4a8716973ffcd52e8749c91da7382bb9eff42",
+              "outcome": "OTHER",
+              "observations": [
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log"
+              ],
+              "key": "0def308f3b0c3862b5c1a1ab4a9173dc34ef0559a9995e161bac4df8687eaba0",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import"
+              ],
+              "key": "35728b53a0834ef90b46c589cf92f1bb1e40868ad7b67eeb75ec409b29945b32",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "metrics"
+              ],
+              "key": "a6c0ebfcb6cb58393bd48a8ce89089114a4dd4074bc320dd5801088cb5227360",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "audit-log",
+                "metrics"
+              ],
+              "key": "97b9acddedbb204941513dde2824aa2921f06b536665dac7ca9cfc2c61e9be66",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log"
+              ],
+              "key": "59f40d8cc601ff3613c265fb004ee4af3dff9769027c801b8d56f35c6767459a",
+              "outcome": "OTHER",
+              "observations": [
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "duplicate-import"
+              ],
+              "key": "e70dec307d41f57b0aea71968f1f7c8261b721af57684651e6e29e1da50899a4",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "metrics"
+              ],
+              "key": "f7087c56f2b315c4f8a120a191a84e53828af4879f0030236ed4dd3531af3d0b",
+              "outcome": "OTHER",
+              "observations": [
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "audit-log",
+                "metrics"
+              ],
+              "key": "1fe06584e16045f655f4acc9d2a95e535c436a69479128f8bc5f93325c43a5d9",
+              "outcome": "OTHER",
+              "observations": [
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log",
+                "duplicate-import"
+              ],
+              "key": "cdcdf807b35390d31962f8213250284576f153761a9f6e0a5df8f3337fbf400c",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log",
+                "metrics"
+              ],
+              "key": "d695ed9bdf861e956b9824244c13ed5f2bd03a09c510a34fb672d857a2915e02",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import",
+                "metrics"
+              ],
+              "key": "e2461411de6d32f3a558a45979f044ff11cfbdeeddfc46d79e1005397e4b4a12",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import"
+              ],
+              "key": "e6c366ee24f312182bda70dbc4376775c878b155e890204b56b8d73ba83b8396",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "metrics"
+              ],
+              "key": "2f94945da17e020729f756df4ace647b78028523185ad315d735b6b342aa9d3c",
+              "outcome": "OTHER",
+              "observations": [
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "OTHER",
+                  "signature": {
+                    "operation": "legacy-import",
+                    "type": "json.JSONDecodeError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "duplicate-import",
+                "metrics"
+              ],
+              "key": "62922c9bcb0458fcb4f8241653c3b4602b9ac256441f57d40c6661aaf8437cff",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "key": "c753884dd56503b978a7caae136030383b836919b0fbdb209a731ab0f4bcb982",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "e4e6d7dfa91ddb3d701a411a3ea64089680b55c906120f51d1ae2e5d6dc86742",
+              "context_stable": true
+            }
+          ],
+          "target_reproduced": true,
+          "invalid_calls": 0
+        }
+      }
+    },
+    {
+      "case": "standard-success",
+      "budget": 512,
+      "initial_size": 6,
+      "results": {
+        "unstructured-blind-ddmin": {
+          "candidate": [
+            "duplicate-import"
+          ],
+          "size": 1,
+          "target_reproduced": false,
+          "outcome": "INVALID",
+          "calls": 14,
+          "invalid_calls": 6,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "INVALID",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "audit-log"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "INVALID",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "duplicate-import"
+              ],
+              "outcome": "INVALID",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "closed-blind-ddmin": {
+          "candidate": [
+            "schema",
+            "seed",
+            "duplicate-import"
+          ],
+          "size": 3,
+          "target_reproduced": true,
+          "outcome": "TARGET",
+          "calls": 18,
+          "invalid_calls": 0,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "audit-log"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "closed-signed-ddmin": {
+          "candidate": [
+            "schema",
+            "seed",
+            "duplicate-import"
+          ],
+          "size": 3,
+          "target_reproduced": true,
+          "outcome": "TARGET",
+          "calls": 18,
+          "invalid_calls": 0,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "audit-log"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "failureslice-exact": {
+          "candidate": [
+            "schema",
+            "seed",
+            "duplicate-import"
+          ],
+          "size": 3,
+          "certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+          "complete": true,
+          "calls": 56,
+          "states": 64,
+          "alternatives": [
+            [
+              "schema",
+              "seed",
+              "duplicate-import"
+            ]
+          ],
+          "evaluations": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "key": "5be5eaae0dc7430a2a68eb99c292811da47e910036cb8959e114695533f8904d",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [],
+              "key": "7823cd618bbc987a67d829ca4f670f5b70c90a0f970111079ae8091ea642ad7d",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "key": "d45ce0d79b463e34c68ed6a9b6323765f4fd8cd1c114af0dec18008fb9476359",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log"
+              ],
+              "key": "b302c27979d9a5a643f791263ac0bcc61919743589b8e09fed0589c410340e7f",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "metrics"
+              ],
+              "key": "105d51e5317c25835c0893188d33a4a1622790a8394a0bd11bb5b872be88989e",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import"
+              ],
+              "key": "e25488f158b0517d3a10c897e7610c2b3172414affab0535531602a25559b478",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "key": "fb2e225b8c17b8b99fce76139c691e490e5fe1b16845908dee6b9a9f4225c21e",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "audit-log"
+              ],
+              "key": "472a457a5722c3270864163524d1417b116c538229de11efc819da69972eae68",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "metrics"
+              ],
+              "key": "2195879d385fcec3f4361e2f5968eaa71de30ae9261d77519545f478492ae534",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log",
+                "metrics"
+              ],
+              "key": "08b164005f07e412c0f1baf2c347a8095312d4a155f1d1a12ddc2cf6c26a2519",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed"
+              ],
+              "key": "ed26937b15615c0a8af3f457b9e446e4dcf6344149dff3226995f1cba4589104",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "audit-log"
+              ],
+              "key": "f9b8c01aa68a0bd3a53eec26da47bc4a60b9acd9a4f249b2b9604fa0cc66df1e",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "metrics"
+              ],
+              "key": "880d9a9e9bc767548b3620cccc82346bd6e456937e378a4fccbc34be5a39a972",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log"
+              ],
+              "key": "dcf33d25123cd17368c98fb1c8d66f8e6ba6be6e54f7c1553f6223c2324d14db",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import"
+              ],
+              "key": "c683ec0ba7350caf249629c300c47bce1ca1842b3941e1f0f7f5d0e903f1a1ce",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "metrics"
+              ],
+              "key": "badabb92e003353b9830fe823b4b0f7e72fb38dd004dfbb50162cbb1237cff1b",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "audit-log",
+                "metrics"
+              ],
+              "key": "83e5ee8d7f33c4ffca788a767e9fce5cf3a1404e0b8b2aae536a9a095edccf39",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log"
+              ],
+              "key": "dcd9a773cf6d93eb7922f172204bc80e03065e9a07fd33165131576e901e7296",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "duplicate-import"
+              ],
+              "key": "0a18f875d839e80d6e6bce76ac617df21e81176b00f1e3ade9dcac70de722c04",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "metrics"
+              ],
+              "key": "4443a1a54b0e23499b46f881161f03241a7a57daafd82a8f1f0c2297d6835b65",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "audit-log",
+                "metrics"
+              ],
+              "key": "c418e8a7b9118a3ec07aec79d33e0519496a2adfda4791495d76dcfc44f4198e",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log",
+                "duplicate-import"
+              ],
+              "key": "6cff34524342fb64b8d4d65fad55e883538508a3747fefa89dc5d6c6ce83964d",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log",
+                "metrics"
+              ],
+              "key": "e3f8571119fc7256d4062181b5d6474be5d17ffffd33cdbd2c7aa767c89f096a",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import",
+                "metrics"
+              ],
+              "key": "75a4155f9e0f05f2fe8e91c55119ce834d67e8d0a98ebeba0b95f895b0847163",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import"
+              ],
+              "key": "2154e9fb704ba6f2677e4cada0153253bc43ce92d700768c21aa2d29fec21d29",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "metrics"
+              ],
+              "key": "dbba150e3f33efb8effc8b876c62bc02875cb938b50fbcdf5e8b54bf464ad777",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "duplicate-import",
+                "metrics"
+              ],
+              "key": "c865d1bc0c1ac376dda1671f89a1e190f0d3f4a764f58861a4f31d6482619c8c",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "key": "7492f6ff9e75a12bd08abafdfc65a3898deaaecc0b1dd9491d254a47a2aa6a02",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "443a304480ff0d01489358d9d97180548cd19219644e38bebb46527da66d0f2c",
+              "context_stable": true
+            }
+          ],
+          "target_reproduced": true,
+          "invalid_calls": 0
+        }
+      }
+    },
+    {
+      "case": "nonmonotone",
+      "budget": 512,
+      "initial_size": 4,
+      "results": {
+        "unstructured-blind-ddmin": {
+          "candidate": [
+            "seed"
+          ],
+          "size": 1,
+          "target_reproduced": false,
+          "outcome": "INVALID",
+          "calls": 10,
+          "invalid_calls": 2,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "noise-a",
+                "noise-b"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "seed"
+              ],
+              "outcome": "INVALID",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "closed-blind-ddmin": {
+          "candidate": [
+            "schema",
+            "seed"
+          ],
+          "size": 2,
+          "target_reproduced": true,
+          "outcome": "TARGET",
+          "calls": 8,
+          "invalid_calls": 0,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "noise-a",
+                "noise-b"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "closed-signed-ddmin": {
+          "candidate": [
+            "schema",
+            "seed"
+          ],
+          "size": 2,
+          "target_reproduced": true,
+          "outcome": "TARGET",
+          "calls": 8,
+          "invalid_calls": 0,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "noise-a",
+                "noise-b"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "failureslice-exact": {
+          "candidate": [
+            "schema",
+            "seed"
+          ],
+          "size": 2,
+          "certificate": "CARDINALITY_MINIMUM_AND_INCLUSION_MINIMAL",
+          "complete": true,
+          "calls": 24,
+          "states": 16,
+          "alternatives": [
+            [
+              "schema",
+              "seed"
+            ]
+          ],
+          "evaluations": [
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "noise-a",
+                "noise-b"
+              ],
+              "key": "0f33cd7b17aa23e85291d5520c48eefdd8436e8765fabf626b44c1d4561aa569",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            },
+            {
+              "candidate": [],
+              "key": "c4798d3a6cd70da73eaa45b1565eb5def24a0cc5472f00fcc88a65b18dc4d12e",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "key": "7f44ce8e60f7df67fcd12aa45ebccaa0f503e30672b62c31ba306fe49ed17764",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "noise-a"
+              ],
+              "key": "afeac13f7dd2524fd583c0c57876edd650902350224dc29ab3e836d6f7d52acb",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "noise-b"
+              ],
+              "key": "043f78423adda6a1c912fce172f8d537d8859d1adb825301841924b6c26dcb02",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "key": "174839252dc9d588b33b1c0400f6775e993440bfafc23907d1621cf3503a4bd4",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "noise-a"
+              ],
+              "key": "3b5e7048a5c2c17172f66530b5865490947587a561f9912891249d91421d098a",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "noise-b"
+              ],
+              "key": "fdff5a999768b181f89b7cc895c2b317193ea2ee0deec0833a799b8465a2f62e",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "noise-a",
+                "noise-b"
+              ],
+              "key": "7fa74cc60bad673e4cee81a1332c15405558bee2d3b995daf065d1095868c9e4",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "noise-a"
+              ],
+              "key": "12ab16195473a844692e892c0a2f75622d4a550742bc27cede952b4eedc51259",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "noise-b"
+              ],
+              "key": "6848ff876c7cb35af78eb2e46a2b9881c95e4163fdc4a03d723f824a75d96ea8",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "noise-a",
+                "noise-b"
+              ],
+              "key": "ba25b75cf1b15e8df57b03c82369e5c2245bbbf9ea1a23d7bae098334d8b9a1a",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "5da2e88a08e5ebbaca7625858b03f538667d9160252ab848f5d51631f8570f56",
+              "context_stable": true
+            }
+          ],
+          "target_reproduced": true,
+          "invalid_calls": 0
+        }
+      }
+    },
+    {
+      "case": "adverse-budget",
+      "budget": 60,
+      "initial_size": 12,
+      "results": {
+        "unstructured-blind-ddmin": {
+          "candidate": [
+            "duplicate-import"
+          ],
+          "size": 1,
+          "target_reproduced": false,
+          "outcome": "INVALID",
+          "calls": 16,
+          "invalid_calls": 6,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics",
+                "noise-0",
+                "noise-1",
+                "noise-2",
+                "noise-3",
+                "noise-4",
+                "noise-5"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "INVALID",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "audit-log"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "INVALID",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "duplicate-import"
+              ],
+              "outcome": "INVALID",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "closed-blind-ddmin": {
+          "candidate": [
+            "schema",
+            "seed",
+            "duplicate-import"
+          ],
+          "size": 3,
+          "target_reproduced": true,
+          "outcome": "TARGET",
+          "calls": 20,
+          "invalid_calls": 0,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics",
+                "noise-0",
+                "noise-1",
+                "noise-2",
+                "noise-3",
+                "noise-4",
+                "noise-5"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "audit-log"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "closed-signed-ddmin": {
+          "candidate": [
+            "schema",
+            "seed",
+            "duplicate-import"
+          ],
+          "size": 3,
+          "target_reproduced": true,
+          "outcome": "TARGET",
+          "calls": 20,
+          "invalid_calls": 0,
+          "certificate": "ddmin tested local heuristic only",
+          "transcript": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics",
+                "noise-0",
+                "noise-1",
+                "noise-2",
+                "noise-3",
+                "noise-4",
+                "noise-5"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "audit-log"
+              ],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import",
+                "metrics"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed",
+                "duplicate-import"
+              ],
+              "outcome": "TARGET",
+              "fresh_calls": 2
+            },
+            {
+              "candidate": [],
+              "outcome": "PASS",
+              "fresh_calls": 2
+            }
+          ]
+        },
+        "failureslice-exact": {
+          "candidate": [
+            "schema",
+            "legacy-import",
+            "seed",
+            "audit-log",
+            "duplicate-import",
+            "metrics",
+            "noise-0",
+            "noise-1",
+            "noise-2",
+            "noise-3",
+            "noise-4",
+            "noise-5"
+          ],
+          "size": 12,
+          "certificate": "UNKNOWN",
+          "complete": false,
+          "calls": 60,
+          "states": 62,
+          "alternatives": [
+            [
+              "schema",
+              "legacy-import",
+              "seed",
+              "audit-log",
+              "duplicate-import",
+              "metrics",
+              "noise-0",
+              "noise-1",
+              "noise-2",
+              "noise-3",
+              "noise-4",
+              "noise-5"
+            ]
+          ],
+          "evaluations": [
+            {
+              "candidate": [
+                "schema",
+                "legacy-import",
+                "seed",
+                "audit-log",
+                "duplicate-import",
+                "metrics",
+                "noise-0",
+                "noise-1",
+                "noise-2",
+                "noise-3",
+                "noise-4",
+                "noise-5"
+              ],
+              "key": "ac618edc625fcb50cf7f1c697e5034c93ff5c7a126de5c59d3ae34f10b95ddc2",
+              "outcome": "TARGET",
+              "observations": [
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                },
+                {
+                  "outcome": "TARGET",
+                  "signature": {
+                    "message": "UNIQUE constraint failed: users.email",
+                    "operation": "duplicate-import",
+                    "type": "sqlite3.IntegrityError"
+                  },
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [],
+              "key": "d09e9db77de86582d7061bd888ac54f1e8e41140ea43b2250c7e25f708ce0f1f",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema"
+              ],
+              "key": "b10d0e185a9f7e5881a5d434f227e79d25b134eb836540da65973c73e5a6fbf6",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log"
+              ],
+              "key": "4a296188bcac0302e92139267ea6a3abe54cc26d4a6c45ca5c71a4928a502536",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "metrics"
+              ],
+              "key": "ba378f5f7ab09b41566ce9b1952b8b7378681693a13289ee96775689464ceab2",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "noise-0"
+              ],
+              "key": "2ef6a6c61519f7e9acf871f31d68457d233057dfc5e770bf9a88723cf2b2c8ff",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "noise-1"
+              ],
+              "key": "3ffa8127525cdaae2fbea012faf308a8e3af27464b6410709a4d5607e69b2d88",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "noise-2"
+              ],
+              "key": "2a93b08717712e4900a625078056b4945640600f1f83b4a4ba25ef95522f8a83",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "noise-3"
+              ],
+              "key": "d926d7c05bb3b867b1bf4b9aff2145e0970bac8841083c74314639d9fe08000e",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "noise-4"
+              ],
+              "key": "47d88dfb8e9c6a390570877fcefece4dedb846ff64c970d7493940fe193749fb",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "noise-5"
+              ],
+              "key": "e8d8c1bedd7877e9b087657e841f10aa30a441fd55ab9392f057050ed6e9333a",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "legacy-import"
+              ],
+              "key": "aad72fd01836b32f45b3f80b187f2ab8091797d6c897977ec9b1e71ea4f550af",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "seed"
+              ],
+              "key": "70c4abb36f407ad4587d0c54096fd47687a2fbb4cdd65b8dd8b5cbf36591a7d1",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "audit-log"
+              ],
+              "key": "f10949e23ce3c00cedda6ab62bf97eac6439d5bcc2ab1f1e45f280c640816ea0",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "metrics"
+              ],
+              "key": "1026929ea13b9032d0e38c9ffe4b25c4c8d4cdbdeefb505011ed8eb7f74e6c99",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "noise-0"
+              ],
+              "key": "37f5163e62e68b4b575af670655ac5042bc36cf7d6f3e911b9e0f2da3a99595c",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "noise-1"
+              ],
+              "key": "6260ba17e9e559e05859a37d637a7e13ea12135eaa37296bfa359d2a967d59c3",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "noise-2"
+              ],
+              "key": "0992e61de509e98bd780fb490948b29b761e0ee42e5617c8b3ea82223a9aa951",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "noise-3"
+              ],
+              "key": "9a27f939b4c9069a4d0a2e3f0c2f42aed6703a2af179619eea4ce812e75705ab",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "noise-4"
+              ],
+              "key": "b6ba0cfdc3b542d4342c418e7739b55a9937e903f7cb3a9170d384caba20292c",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "schema",
+                "noise-5"
+              ],
+              "key": "b030737ac637098ba795c7e92502a0f1480983d3093b0ccf060c18c07a29b961",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log",
+                "metrics"
+              ],
+              "key": "079c1a3b456cb6c2a1aec88f8a60155e4eef010b8bba782daf56f8412bab37f8",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log",
+                "noise-0"
+              ],
+              "key": "c5ed9481810cb56c26922a2429bb28cfbbf2fbe54e8b1df61bdf947f2bb28908",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log",
+                "noise-1"
+              ],
+              "key": "377c9833ebfe849ac7c69cdf7d4d6d9e205c494d9169b7f88e791eedfe2e944b",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log",
+                "noise-2"
+              ],
+              "key": "b003c05b88d3e286a20afa62deeb13cff1da7e04a929b3e3be55dbe94972c2e7",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log",
+                "noise-3"
+              ],
+              "key": "b05f3419bd1b731bfdb0e2fb7ba7c1947f2e79f04dd64eafe9b6f5c0925de884",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log",
+                "noise-4"
+              ],
+              "key": "0662e2475a6ad4bbc5d213d4dca545e465a93cd103d6d44a783c8802c9077924",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "audit-log",
+                "noise-5"
+              ],
+              "key": "c3d3df72fa4cd58a19c23d6608640fb3849eef4364ed2e1b344526fe5b442f1e",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "metrics",
+                "noise-0"
+              ],
+              "key": "60071f7429f257999de05ff6ff692c7787b6c6abaf1233d9dc835aca3fb3208e",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "metrics",
+                "noise-1"
+              ],
+              "key": "9e1fc012aff88565c7b6243b20a14c16604748b03f43f87a23a8877217013a0d",
+              "outcome": "PASS",
+              "observations": [
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                },
+                {
+                  "outcome": "PASS",
+                  "signature": null,
+                  "detail": ""
+                }
+              ],
+              "fresh_calls": 2,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            },
+            {
+              "candidate": [
+                "metrics",
+                "noise-2"
+              ],
+              "key": "c90dcf046ee90674b91eb800962ebc9f6463c1c6f3188f2dab1f42fd2c30d479",
+              "outcome": "UNKNOWN",
+              "observations": [],
+              "fresh_calls": 0,
+              "context": "015ba6ae5166442e21575c2cd3df18546da448e5114d81398010ff43277d853e",
+              "context_stable": true
+            }
+          ],
+          "target_reproduced": true,
+          "invalid_calls": 0
+        }
+      }
+    }
+  ]
+}
